@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Dictionary</h1>
+    <div class="container">
+        <h2><u>Words and Meanings</u></h2>
+    <div class="intro">
+        <ul>
+            {% for word, meaning in dictionary.items() %}
+                <li><center>{{ word }}: {{ meaning }}</center><center>{% endfor %}</center></li>
+        </ul>
+    </div>
+    <div class="main">
+    <div>
+        <h2>Add a Word</h2>
+        <form action="/add_word" method="POST">
+            <label for="word">Word:</label>
+            <input type="text" id="word" name="word" required>
+            <label for="meaning">Meaning:</label>
+            <input type="text" id="meaning" name="meaning" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div>
+        <h2>Update a Word</h2>
+        <form action="/update_word" method="POST">
+            <label for="word">Word:</label>
+            <input type="text" id="word" name="word" required>
+            <label for="meaning">New Meaning:</label>
+            <input type="text" id="meaning" name="meaning" required>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+    <div>
+        <h2>Delete a Word</h2>
+        <form action="/delete_word" method="POST">
+            <label for="word">Word:</label>
+            <input type="text" id="word" name="word" required>
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
